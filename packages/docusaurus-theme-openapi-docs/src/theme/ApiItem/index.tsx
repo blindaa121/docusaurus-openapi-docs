@@ -21,6 +21,7 @@ import type { Props } from "@theme/DocItem";
 import DocItemMetadata from "@theme/DocItem/Metadata";
 import SkeletonLoader from "@theme/SkeletonLoader";
 import clsx from "clsx";
+import CopyMarkdownButton from "@theme/CopyMarkdownButton";
 import {
   ParameterObject,
   ServerObject,
@@ -159,6 +160,7 @@ export default function ApiItem(props: Props): JSX.Element {
   }
 
   if (api) {
+    const { rawMarkdown } = MDXComponent as any;
     return (
       <DocProvider content={props.content}>
         <HtmlClassNameProvider className={docHtmlClassName}>
@@ -167,6 +169,7 @@ export default function ApiItem(props: Props): JSX.Element {
             <Provider store={store2}>
               <div className={clsx("row", "theme-api-markdown")}>
                 <div className="col col--7 openapi-left-panel__container">
+                  <CopyMarkdownButton markdown={rawMarkdown} />
                   <MDXComponent />
                 </div>
                 <div className="col col--5 openapi-right-panel__container">
@@ -183,6 +186,7 @@ export default function ApiItem(props: Props): JSX.Element {
       </DocProvider>
     );
   } else if (schema) {
+    const { rawMarkdown } = MDXComponent as any;
     return (
       <DocProvider content={props.content}>
         <HtmlClassNameProvider className={docHtmlClassName}>
@@ -190,6 +194,7 @@ export default function ApiItem(props: Props): JSX.Element {
           <DocItemLayout>
             <div className={clsx("row", "theme-api-markdown")}>
               <div className="col col--7 openapi-left-panel__container schema">
+                <CopyMarkdownButton markdown={rawMarkdown} />
                 <MDXComponent />
               </div>
               <div className="col col--5 openapi-right-panel__container">

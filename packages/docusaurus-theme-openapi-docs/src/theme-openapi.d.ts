@@ -275,6 +275,15 @@ declare module "@theme/ApiExplorer/Server" {
   export default function Server(): JSX.Element;
 }
 
+declare module "@theme/CopyMarkdownButton" {
+  export interface CopyMarkdownButtonProps {
+    markdown: string | undefined;
+  }
+  export default function CopyMarkdownButton(
+    props: CopyMarkdownButtonProps
+  ): JSX.Element;
+}
+
 declare module "@theme/ApiExplorer/ApiCodeBlock" {
   export default function ApiCodeBlock(): JSX.Element;
 }
