@@ -236,6 +236,8 @@ show_extensions: true
 {{/frontMatter.show_extensions}}
 ---
 
+export const rawMarkdown = '{{{markdown_b64}}}';
+
 {{{markdown}}}
       `;
 
@@ -249,6 +251,8 @@ sidebar_label: "{{{title}}}"
 hide_title: true
 custom_edit_url: null
 ---
+
+export const rawMarkdown = '{{{markdown_b64}}}';
 
 {{{markdown}}}
 
@@ -268,6 +272,8 @@ title: "{{{frontMatter.description}}}"
 description: "{{{frontMatter.description}}}"
 custom_edit_url: null
 ---
+
+export const rawMarkdown = '{{{markdown_b64}}}';
 
 {{{markdown}}}
 
@@ -294,6 +300,8 @@ schema: true
 sample: {{{frontMatter.sample}}}
 custom_edit_url: null
 ---
+
+export const rawMarkdown = '{{{markdown_b64}}}';
 
 {{{markdown}}}
             `;
@@ -329,6 +337,8 @@ custom_edit_url: null
         }
         const markdown = pageGeneratorByType[item.type](item as any);
         item.markdown = markdown;
+        const markdown_b64 = Buffer.from(markdown).toString("base64");
+        (item as any).markdown_b64 = markdown_b64;
         if (item.type === "api") {
           // opportunity to compress JSON
           // const serialize = (o: any) => {

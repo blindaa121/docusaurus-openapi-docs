@@ -126,6 +126,7 @@ export interface ApiPageMetadata extends ApiMetadataBase {
   type: "api";
   api: ApiItem;
   markdown?: string;
+  markdown_b64?: string;
 }
 
 export interface ApiItem extends OperationObject {
@@ -145,6 +146,7 @@ export interface InfoPageMetadata extends ApiMetadataBase {
   type: "info";
   info: ApiInfo;
   markdown?: string;
+  markdown_b64?: string;
   securitySchemes?: {
     [key: string]: SecuritySchemeObject;
   };
@@ -154,12 +156,14 @@ export interface TagPageMetadata extends ApiMetadataBase {
   type: "tag";
   tag: TagObject;
   markdown?: string;
+  markdown_b64?: string;
 }
 
 export interface SchemaPageMetadata extends ApiMetadataBase {
   type: "schema";
   schema: SchemaObject;
   markdown?: string;
+  markdown_b64?: string;
 }
 
 export interface TagGroupPageMetadata extends ApiMetadataBase {
@@ -167,6 +171,7 @@ export interface TagGroupPageMetadata extends ApiMetadataBase {
   name: string;
   tags: TagObject[];
   markdown?: string;
+  markdown_b64?: string;
 }
 
 export type ApiInfo = InfoObject;
