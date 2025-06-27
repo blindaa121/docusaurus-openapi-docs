@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  * ========================================================================== */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
@@ -20,6 +20,9 @@ import CodeBlock from "@theme/CodeBlock";
 import type { Props } from "@theme/DocItem";
 import DocItemMetadata from "@theme/DocItem/Metadata";
 import SkeletonLoader from "@theme/SkeletonLoader";
+import FloatingButton from "@theme/ApiExplorer/FloatingButton";
+import ExitButton from "@theme/ApiExplorer/ApiCodeBlock/ExitButton";
+import Modal from "react-modal";
 import clsx from "clsx";
 import {
   ParameterObject,
@@ -84,6 +87,11 @@ export default function ApiItem(props: Props): JSX.Element {
   const themeConfig = siteConfig.themeConfig as ThemeConfig;
   const options = themeConfig.api;
   const isBrowser = useIsBrowser();
+
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  useEffect(() => {
+    Modal.setAppElement("body");
+  }, []);
 
   // Regex for 2XX status
   const statusRegex = new RegExp("(20[0-9]|2[1-9][0-9])");
@@ -170,12 +178,36 @@ export default function ApiItem(props: Props): JSX.Element {
                   <MDXComponent />
                 </div>
                 <div className="col col--5 openapi-right-panel__container">
+                  <FloatingButton
+                    label="Full Screen"
+                    onClick={() => setIsFullScreen(true)}
+                  >
+                    <BrowserOnly fallback={<SkeletonLoader size="lg" />}>
+                      {() => {
+                        return <ApiExplorer item={api} infoPath={infoPath} />;
+                      }}
+                    </BrowserOnly>
+                  </FloatingButton>
+                </div>
+                <Modal
+                  className="openapi-explorer__demo-modal-content"
+                  overlayClassName="openapi-explorer__demo-modal-overlay"
+                  isOpen={isFullScreen}
+                  onRequestClose={() => setIsFullScreen(false)}
+                  contentLabel="API Demo"
+                >
+                  <div style={{ textAlign: "right" }}>
+                    <ExitButton
+                      className="openapi-explorer__code-block-exit-btn"
+                      handler={() => setIsFullScreen(false)}
+                    />
+                  </div>
                   <BrowserOnly fallback={<SkeletonLoader size="lg" />}>
                     {() => {
                       return <ApiExplorer item={api} infoPath={infoPath} />;
                     }}
                   </BrowserOnly>
-                </div>
+                </Modal>
               </div>
             </Provider>
           </DocItemLayout>

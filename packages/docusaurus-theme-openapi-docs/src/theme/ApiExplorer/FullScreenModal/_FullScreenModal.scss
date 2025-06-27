@@ -1,0 +1,20 @@
+.openapi-explorer__demo-modal-content {
+  padding: 1rem;
+  border: thin solid var(--ifm-toc-border-color);
+  border-radius: var(--ifm-global-radius);
+  max-width: 95%;
+  width: 90vw;
+  height: 90vh;
+  background-color: var(--ifm-background-color);
+  overflow: auto;
+}
+
+.openapi-explorer__demo-modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 201;
+}
