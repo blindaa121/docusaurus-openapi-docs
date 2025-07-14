@@ -30,6 +30,7 @@ import * as sdk from "postman-collection";
 import { FormProvider, useForm } from "react-hook-form";
 
 import makeRequest from "./makeRequest";
+import DemoExpandButton from "@theme/ApiExplorer/DemoExpandButton";
 
 function Request({ item }: { item: ApiItem }) {
   const postman = new sdk.Request(item.postman);
@@ -194,6 +195,10 @@ function Request({ item }: { item: ApiItem }) {
               Expand all
             </span>
           )}
+          <DemoExpandButton
+            item={item}
+            className="openapi-explorer__code-block-code-btn"
+          />
         </div>
         <div className="openapi-explorer__details-outer-container">
           {showServerOptions && item.method !== "event" && (

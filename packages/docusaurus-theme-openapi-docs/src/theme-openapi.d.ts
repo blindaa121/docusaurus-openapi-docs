@@ -279,6 +279,14 @@ declare module "@theme/ApiExplorer/ApiCodeBlock" {
   export default function ApiCodeBlock(): JSX.Element;
 }
 
+declare module "@theme/ApiExplorer/DemoExpandButton" {
+  import { Props as DemoExpandButtonProps } from "@theme/ApiExplorer/DemoExpandButton";
+
+  export default function DemoExpandButton(
+    props: DemoExpandButtonProps
+  ): JSX.Element;
+}
+
 declare module "@theme/ApiExplorer/Server/slice" {
   export default server as Reducer<State, AnyAction>;
 }
