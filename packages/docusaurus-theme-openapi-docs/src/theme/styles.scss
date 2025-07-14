@@ -18,6 +18,7 @@
 @use "./ApiExplorer/Request/Request";
 @use "./ApiExplorer/Response/Response";
 @use "./ApiExplorer/Server/Server";
+@use "./ApiExplorer/FullScreenModal/FullScreenModal";
 
 /* Api Demo Panel / ApiCodeBlock */
 @use "./ApiExplorer/ApiCodeBlock/Container/Container";
