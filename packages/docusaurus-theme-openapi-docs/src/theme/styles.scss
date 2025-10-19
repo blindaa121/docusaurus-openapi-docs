@@ -27,6 +27,7 @@
 @use "./ApiExplorer/ApiCodeBlock/ExpandButton/ExpandButton";
 @use "./ApiExplorer/ApiCodeBlock/Line/Line";
 @use "./ApiExplorer/ApiCodeBlock/WordWrapButton/WordWrapButton";
+@use "./CopyMarkdownButton/CopyMarkdownButton";
 
 /* Schema Styling */
 @use "./ParamsItem/ParamsItem";

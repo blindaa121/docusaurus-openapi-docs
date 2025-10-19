@@ -1,0 +1,39 @@
+.openapi-copy-markdown-btn-icons {
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: 0.25rem;
+}
+
+.openapi-copy-markdown-btn-icon,
+.openapi-copy-markdown-btn-icon--success {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: currentColor;
+  opacity: inherit;
+  width: inherit;
+  height: inherit;
+  transition: all 0.15s ease;
+}
+
+.openapi-copy-markdown-btn-icon--success {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.33);
+  opacity: 0;
+  color: #00d600;
+}
+
+.openapi-copy-markdown-btn--copied {
+  .openapi-copy-markdown-btn-icon {
+    transform: scale(0.33);
+    opacity: 0;
+  }
+
+  .openapi-copy-markdown-btn-icon--success {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition-delay: 0.075s;
+  }
+}
